@@ -1,6 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsletter App Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -11,11 +14,18 @@
             display: flex;
             height: 100vh;
             background-color: #f8f8f8;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
             display: flex;
-            width: 100%;
+            width: 80%;
+            max-width: 1200px;
+            height: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .login-section,
@@ -24,6 +34,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .login-section {
@@ -56,6 +67,12 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .info-section button:hover {
+            background-color: white;
+            color: #28a745;
         }
 
         .login-form {
@@ -88,11 +105,16 @@
             padding: 10px;
             margin: 10px 0;
             border: none;
-            background-color: #ccc;
+            background-color: #28a745;
             color: white;
             font-size: 16px;
-            cursor: not-allowed;
+            cursor: pointer;
             border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #218838;
         }
 
         .login-form .forgot-password {
@@ -147,6 +169,17 @@
         .app-name span {
             color: black;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .info-section {
+                display: none; /* Hide the info section on smaller screens */
+            }
+        }
     </style>
 </head>
 
@@ -158,9 +191,11 @@
             </div>
             <div class="login-form">
                 <h2>Login</h2>
-                <input type="email" placeholder="Enter your email address" style="border-radius: 30px;">
-                <input type="password" placeholder="Enter your password">
-                <button>LOGIN</button>
+                <form id="loginForm" onsubmit="return validateForm()">
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <button type="submit">LOGIN</button>
+                </form>
                 <div class="forgot-password">
                     <a href="#">Forgot password?</a>
                 </div>
@@ -174,12 +209,11 @@
         </div>
         <div class="info-section">
             <h2>Hello, Friend!</h2>
-            <p>Enter your personal details and start journey with us</p>
-            <button style="border-radius: 30px;" onclick="window.location.href='index.html'">SIGN UP</button>
+            <p>Enter your personal details and start your journey with us</p>
+            <button style="border-radius: 30px;" onclick="window.location.href='signup.html'">SIGN UP</button>
         </div>
     </div>
+
 </body>
 
 </html>
-
-               

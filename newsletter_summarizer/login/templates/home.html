@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News Scrapper</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #28a745;
+            color: rgb(255, 255, 255);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header span{
+            color: black;
+        }
+
+        nav {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: black;
+        }
+
+        #category-menu {
+            display: none;
+            background-color: #28a745;
+            padding: 20px;
+            position: absolute;
+            top: 40px;
+            left: 10px;
+        }
+
+        #category-menu li {
+            list-style: none;
+        }
+
+        #category-menu li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+        }
+
+        #category-menu li a:hover{
+            color: black;
+        }
+
+        .news-container {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            overflow-x: auto;
+            padding: 2rem;
+            gap: 20px;
+        }
+
+        .news-item-horizontal {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            width: 300px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item-horizontal img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .news-item-horizontal h2 {
+            margin: 0.5rem 0;
+        }
+
+        .news-item-horizontal p {
+            color: #666;
+        }
+
+        .large-news-block {
+            margin: 20px;
+            padding: 1rem;
+        /* max-height: 400px; */
+            overflow-y:scroll;
+        }
+
+        .large-news-item {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            flex-direction: row;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .large-news-item:nth-child(even){
+            flex-direction: row-reverse;
+        }
+
+        /* .large-news-item:hover{
+            transform: scale(1.03);  this is used to largen the text on hover
+        } */
+
+        .news-image {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .news-text {
+            flex-grow: 1;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .news-text h2 {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .news-text p {
+            color: #333;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NEWSLETTER <span>APP</span></h1>
+    </header>
+
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul id="category-menu">
+            <li><a href="#tech">Technology</a></li>
+            <li><a href="#health">Health</a></li>
+            <li><a href="#sports">Sports</a></li>
+            <li><a href="#business">Business</a></li>
+            <li><a href="#politics">Politics</a></li>
+            <li><a href="#crime">Crime</a></li>
+        </ul>
+    </nav>
+
+
+    <section class="news-container">
+
+        <div class="news-item-horizontal">
+            <img src="news1.jpg" alt="News Image 1">
+            <h2>Headline 1</h2>
+            <p>first news</p>
+        </div>
+
+        <div class="news-item-horizontal">
+            <img src="news2.jpg" alt="News Image 2">
+            <h2>Headline 2</h2>
+            <p>second news</p>
+        </div>
+
+        <div class="news-item-horizontal">
+            <img src="news3.jpg" alt="News Image 3">
+            <h2>Headline 3</h2>
+            <p>third news</p>
+        </div>
+
+    </section>
+
+
+    <section class="large-news-block">
+
+        <div class="large-news-item" id="technology" data-url="technology-page">
+            <img src="tech_image.jpg" alt="Technology News Image" class="news-image">
+            <div class="news-text">
+                <h2>Technology</h2>
+                <p>This is technology.</p>
+            </div>
+        </div>
+
+        <div class="large-news-item" id="health" data-url="health-page">
+            <img src="health_image.jpg" alt="Health News Image" class="news-image">
+            <div class="news-text">
+                <h2>Health</h2>
+                <p>health updates.</p>
+            </div>
+        </div>
+
+        <!-- this redirects to the page from youtube -->
+        <div class="large-news-item" id="sports" data-url="https://www.youtube.com/watch?v=svbtg_JjABM">
+            <img src="sports_image.jpg" alt="Sports News Image" class="news-image">
+            <div class="news-text">
+                <h2>Sports</h2>
+                <p> sports news.</p>
+            </div>
+        </div>
+
+        <div class="large-news-item" id="business" data-url="business-page">
+            <img src="business_image.jpg" alt="Business News Image" class="news-image">
+            <div class="news-text">
+                <h2>Business</h2>
+                <p>Business news.</p>
+            </div>
+        </div>
+
+        <div class="large-news-item" id="politics" data-url="politics-page">
+            <img src="politics_image.jpg" alt="Politics News Image" class="news-image">
+            <div class="news-text">
+                <h2>Politics</h2>
+                <p>political news.</p>
+            </div>
+        </div>
+
+        <div class="large-news-item" id="crime" data-url="crime-page">
+            <img src="crime_image.jpg" alt="Crime News Image" class="news-image">
+            <div class="news-text">
+                <h2>Crime</h2>
+                <p>crime enforcement activities.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script>
+        // open the menu
+        function toggleMenu() {
+            const menu = document.getElementById('category-menu');
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        // to hide the menu when not in use
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-icon')) {
+                const menu = document.getElementById('category-menu');
+                if (menu.style.display === "block") {
+                    menu.style.display = "none";
+                }
+            }
+        };
+
+        // navigate to the link on left swipe
+        document.querySelectorAll('.large-news-item').forEach(item => {
+            let startX = 0;
+            let endX = 0;
+
+            item.addEventListener('pointerdown', (e) => {
+                startX = e.clientX;
+            });
+
+            item.addEventListener('pointermove', (e) => {
+                endX = e.clientX;
+            });
+
+            item.addEventListener('pointerup', () => {
+                if (startX - endX > 50) {
+                    const url = item.getAttribute('data-url');
+                    window.location.href = url; // navigates to the original news
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

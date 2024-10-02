@@ -13,4 +13,4 @@ def login_view(request):
         else:
             return HttpResponse('Invalid credentials')
 
-    return render(request, 'login/login.html')
+    return render(request, 'login.html')
