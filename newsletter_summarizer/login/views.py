@@ -14,3 +14,6 @@ def login_view(request):
             return HttpResponse('Invalid credentials')
 
     return render(request, 'login.html')
+
+def home(request):
+    return render(request, 'home.html')
