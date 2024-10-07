@@ -1,0 +1,38 @@
+
+updates
+
+harish
+{
+1]-> the heading and the paragraph list are of different.
+hence since when looped the title and the content of the news gets mismatched.
+so have to scrape using different tags. will look on it.
+
+2] created a app in django named scrape to scrape web pages and display in it html template.
+login/template/home.html
+
+3] we need to work a lot on ui
+
+4] pushing code is left. i have to verify few things with yall.(new to django)
+
+5] since we often forget to read summary of git. i added a comment file in main project directory.
+   where we can update project in detail. photo attached below
+
+
+
+}
+
+-----------------------------------------------------------------------------------------
+sudheesh{
+
+
+}
+
+-----------------------------------------------------------------------------------------
+priti{
+
+}
+
+-------------------------------------------------------------------------------------------
+arin{
+
+}

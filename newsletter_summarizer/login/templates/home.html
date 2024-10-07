@@ -12,6 +12,7 @@
         }
 
         body {
+            padding-top:100px;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
@@ -21,6 +22,9 @@
             color: rgb(255, 255, 255);
             padding: 1rem;
             text-align: center;
+            position:fixed;
+            width:100%;
+            top:0;
         }
 
         header span{
@@ -37,6 +41,7 @@
             font-size: 30px;
             cursor: pointer;
             color: black;
+            position:fixed;
         }
 
         #category-menu {
@@ -68,38 +73,51 @@
             align-items: center;
             display: flex;
             overflow-x: auto;
-            padding: 2rem;
+<!--            padding: 2rem;-->
             gap: 20px;
         }
 
         .news-item-horizontal {
+            padding-bottom: 1rem;
             background-color: white;
             border-radius: 10px;
-            padding: 1rem;
-            width: 300px;
+            width: 500px;
             flex-shrink: 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem; /* Adds space between containers */
         }
+
 
         .news-item-horizontal img {
             max-width: 100%;
             border-radius: 10px;
+            margin-top: 0.5rem;
         }
 
         .news-item-horizontal h2 {
+            font-size: 40;
             margin: 0.5rem 0;
+            align-items: center;
         }
 
         .news-item-horizontal p {
             color: #666;
+            align-items: center;
+            justify-content: center;
         }
 
         .large-news-block {
             margin: 20px;
             padding: 1rem;
         /* max-height: 400px; */
-            overflow-y:scroll;
+            overflow-y:hidden;
         }
+
+        .news-items {
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+        }
+
 
         .large-news-item {
             background-color: white;
@@ -109,14 +127,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             gap: 20px;
-            flex-direction: row;
+            flex-direction: column;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        .large-news-item:nth-child(even){
+        /*.large-news-item:nth-child(even){
             flex-direction: row-reverse;
-        }
+        }*/
 
         /* .large-news-item:hover{
             transform: scale(1.03);  this is used to largen the text on hover
@@ -169,79 +187,19 @@
 
     <section class="news-container">
 
-        <div class="news-item-horizontal">
-            <img src="news1.jpg" alt="News Image 1">
-            <h2>{{ result1 }}</h2>
-            <p>first news</p>
-        </div>
 
         <div class="news-item-horizontal">
-            <img src="news2.jpg" alt="News Image 2">
-            <h2>Headline 2</h2>
-            <p>second news</p>
-        </div>
-
-        <div class="news-item-horizontal">
-            <img src="news3.jpg" alt="News Image 3">
-            <h2>{{ result2 }}</h2>
-            <p>third news</p>
+            {% for headline, para, web_img in news_items %}
+                <div class="large-news-item" >
+                    <img src="{{ web_img }}" alt="News Image 2">
+                    <h2>{{ headline }}</h2> <!-- Display each headline -->
+                    <p>{{ para }}</p> <!-- Display corresponding paragraph -->
+                </div>
+            {% endfor %}
         </div>
 
     </section>
 
-
-    <section class="large-news-block">
-
-        <div class="large-news-item" id="technology" data-url="technology-page">
-            <img src="tech_image.jpg" alt="Technology News Image" class="news-image">
-            <div class="news-text">
-                <h2>Technology</h2>
-                <p>This is technology.</p>
-            </div>
-        </div>
-
-        <div class="large-news-item" id="health" data-url="health-page">
-            <img src="health_image.jpg" alt="Health News Image" class="news-image">
-            <div class="news-text">
-                <h2>Health</h2>
-                <p>health updates.</p>
-            </div>
-        </div>
-
-        <!-- this redirects to the page from youtube -->
-        <div class="large-news-item" id="sports" data-url="https://www.youtube.com/watch?v=svbtg_JjABM">
-            <img src="sports_image.jpg" alt="Sports News Image" class="news-image">
-            <div class="news-text">
-                <h2>Sports</h2>
-                <p> sports news.</p>
-            </div>
-        </div>
-
-        <div class="large-news-item" id="business" data-url="business-page">
-            <img src="business_image.jpg" alt="Business News Image" class="news-image">
-            <div class="news-text">
-                <h2>Business</h2>
-                <p>Business news.</p>
-            </div>
-        </div>
-
-        <div class="large-news-item" id="politics" data-url="politics-page">
-            <img src="politics_image.jpg" alt="Politics News Image" class="news-image">
-            <div class="news-text">
-                <h2>Politics</h2>
-                <p>political news.</p>
-            </div>
-        </div>
-
-        <div class="large-news-item" id="crime" data-url="crime-page">
-            <img src="crime_image.jpg" alt="Crime News Image" class="news-image">
-            <div class="news-text">
-                <h2>Crime</h2>
-                <p>crime enforcement activities.</p>
-            </div>
-        </div>
-
-    </section>
 
 
     <script>
@@ -266,7 +224,7 @@
         };
 
         // navigate to the link on left swipe
-        document.querySelectorAll('.large-news-item').forEach(item => {
+        document.querySelectorAll('.news-item-horizontal').forEach(item => {
             let startX = 0;
             let endX = 0;
 

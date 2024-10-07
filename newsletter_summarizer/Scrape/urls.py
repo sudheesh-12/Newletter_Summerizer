@@ -1,9 +1,6 @@
 from django.urls import path
 from . import views
 
-
-
 urlpatterns = [
-    # path('', views.home, name='home'),
-  #bariki se deko bc
+    path('',views.head_function,name="head_function")
 ]
