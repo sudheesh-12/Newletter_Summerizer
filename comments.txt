@@ -17,6 +17,7 @@ login/template/home.html
 5] since we often forget to read summary of git. i added a comment file in main project directory.
    where we can update project in detail. photo attached below
 
+6] changed whole code of Scrapping
 
 
 }
