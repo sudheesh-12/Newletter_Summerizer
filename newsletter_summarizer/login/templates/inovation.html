@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI News Scrapper</title>
+    <title>Sports News</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS -->
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            padding-top:100px;
+            padding-top: 100px;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
@@ -22,9 +23,10 @@
             color: rgb(255, 255, 255);
             padding: 1rem;
             text-align: center;
-            position:fixed;
-            width:100%;
-            top:0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1001; /* Ensure header is above other elements */
         }
 
         header span{
@@ -42,6 +44,7 @@
             cursor: pointer;
             color: black;
             position:fixed;
+            z-index: 1001;
         }
 
         #category-menu {
@@ -69,55 +72,9 @@
         }
 
         .news-container {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            overflow-x: auto;
-<!--            padding: 2rem;-->
-            gap: 20px;
+            margin-top: 80px; /* Add margin to avoid overlap with the fixed header */
+            padding: 20px;
         }
-
-        .news-item-horizontal {
-            padding-bottom: 1rem;
-            background-color: white;
-            border-radius: 10px;
-            width: 500px;
-            flex-shrink: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem; /* Adds space between containers */
-        }
-
-
-        .news-item-horizontal img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-top: 0.5rem;
-        }
-
-        .news-item-horizontal h2 {
-            font-size: 40;
-            margin: 0.5rem 0;
-            align-items: center;
-        }
-
-        .news-item-horizontal p {
-            color: #666;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .large-news-block {
-            margin: 20px;
-            padding: 1rem;
-        /* max-height: 400px; */
-            overflow-y:hidden;
-        }
-
-        .news-items {
-            padding-bottom: 1rem;
-            padding-top: 1rem;
-        }
-
 
         .large-news-item {
             background-color: white;
@@ -127,37 +84,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             gap: 20px;
-            flex-direction: row;
+            flex-direction: column;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-
-        .large-news, .large-news-summary {
-            width: 50%;
-            padding: 0.4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .large-news {
-            background-color: white;
-            border-radius: 10px;
-        }
-
-        .large-news-summary {
-            background-color: #900000;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .large-news-item:nth-child(even){
-            flex-direction: row-reverse;
-        }
-
-        /* .large-news-item:hover{
-            transform: scale(1.03);  this is used to largen the text on hover
-        } */
 
         .news-image {
             width: 150px;
@@ -166,16 +96,8 @@
             object-fit: cover;
         }
 
-        .news-text {
-            flex-grow: 1;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
         .news-text h2 {
             margin-bottom: 10px;
-            margin-left: 10px;
-            margin-right: 10px;
         }
 
         .news-text p {
@@ -196,20 +118,18 @@
         <ul id="category-menu">
             <li><a href="home.html">🏠 Home</a></li>
             <li><a href="Travel.html">Travel</a></li>
-            <li><a href="{% url 'inovation' %}">Inovation</a></li>
-            <li><a href="{% url 'sports' %}">Sports</a></li>
+            <li><a href="Inovation.html">Inovation</a></li>
+            <li><a href="sports.html">Sports</a></li>
             <li><a href="#business">Business</a></li>
             <li><a href="#politics">Politics</a></li>
             <li><a href="#crime">Crime</a></li>
         </ul>
     </nav>
 
-
     <section class="news-container">
 
 
-
-        <div class="large-news-block">
+         <div class="large-news-block">
             {% for headline, para, web_img in news_items %}
                 <div class="large-news-item" >
                     <div class="large-news">
@@ -224,10 +144,7 @@
             {% endfor %}
         </div>
 
-
     </section>
-
-
 
     <script>
         // open the menu
