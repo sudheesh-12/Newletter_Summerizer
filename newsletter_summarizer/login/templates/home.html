@@ -4,186 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI News Scrapper</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 
-        body {
-            padding-top:100px;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #28a745;
-            color: rgb(255, 255, 255);
-            padding: 1rem;
-            text-align: center;
-            position:fixed;
-            width:100%;
-            top:0;
-        }
-
-        header span{
-            color: black;
-        }
-
-        nav {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-
-        .menu-icon {
-            font-size: 30px;
-            cursor: pointer;
-            color: black;
-            position:fixed;
-        }
-
-        #category-menu {
-            display: none;
-            background-color: #28a745;
-            padding: 20px;
-            position: absolute;
-            top: 40px;
-            left: 10px;
-        }
-
-        #category-menu li {
-            list-style: none;
-        }
-
-        #category-menu li a {
-            color: rgb(255, 255, 255);
-            text-decoration: none;
-            display: block;
-            padding: 10px 0;
-        }
-
-        #category-menu li a:hover{
-            color: black;
-        }
-
-        .news-container {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            overflow-x: auto;
-<!--            padding: 2rem;-->
-            gap: 20px;
-        }
-
-        .news-item-horizontal {
-            padding-bottom: 1rem;
-            background-color: white;
-            border-radius: 10px;
-            width: 500px;
-            flex-shrink: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem; /* Adds space between containers */
-        }
-
-
-        .news-item-horizontal img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-top: 0.5rem;
-        }
-
-        .news-item-horizontal h2 {
-            font-size: 40;
-            margin: 0.5rem 0;
-            align-items: center;
-        }
-
-        .news-item-horizontal p {
-            color: #666;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .large-news-block {
-            margin: 20px;
-            padding: 1rem;
-        /* max-height: 400px; */
-            overflow-y:hidden;
-        }
-
-        .news-items {
-            padding-bottom: 1rem;
-            padding-top: 1rem;
-        }
-
-
-        .large-news-item {
-            background-color: white;
-            margin-bottom: 20px;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 20px;
-            flex-direction: row;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .large-news, .large-news-summary {
-            width: 50%;
-            padding: 0.4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .large-news {
-            background-color: white;
-            border-radius: 10px;
-        }
-
-        .large-news-summary {
-            background-color: #900000;
-            border-radius: 10px;
-            color: white;
-        }
-
-        .large-news-item:nth-child(even){
-            flex-direction: row-reverse;
-        }
-
-        /* .large-news-item:hover{
-            transform: scale(1.03);  this is used to largen the text on hover
-        } */
-
-        .news-image {
-            width: 150px;
-            height: auto;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-
-        .news-text {
-            flex-grow: 1;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .news-text h2 {
-            margin-bottom: 10px;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-
-        .news-text p {
-            color: #333;
-        }
-
-
-    </style>
 </head>
 <body>
 
@@ -194,63 +18,44 @@
     <nav>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <ul id="category-menu">
-            <li><a href="{% url 'head_function' %}">Home</a></li>
-            <li><a href="Travel.html">Travel</a></li>
+            <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="Travel.html">News</a></li>
             <li><a href="{% url 'inovation' %}">Inovation</a></li>
             <li><a href="{% url 'sports' %}">Sports</a></li>
             <li><a href="#business">Business</a></li>
-            <li><a href="#politics">Politics</a></li>
-            <li><a href="#crime">Crime</a></li>
+            <li><a href="#politics">Arts</a></li>
+            <li><a href="#crime">Culture</a></li>
         </ul>
     </nav>
 
+<!--    <div class="page_name"><i class="fas fa-home"></i><h2>Home</h2></div>-->
 
     <section class="news-container">
 
-
-
         <div class="large-news-block">
-            {% for headline, para, web_img in news_items %}
-                <div class="large-news-item" >
+
+            <div class="large-news-item" >
+                {% for headline, para, web_img in news_items %}
                     <div class="large-news">
-                        <img src="{{ web_img }}" alt="News Image 2">
+                        <img src="{{ web_img }}" alt="News Image">
                         <h2>{{ headline }}</h2> <!-- Display each headline -->
                         <p>{{ para }}</p> <!-- Display corresponding paragraph -->
                     </div>
+                {% endfor %}
+
+                {% for headline, para, web_img in news_items %}
                     <div class="large-news-summary" >
                         <p>Summary of the news </p><!-- Display corresponding summary -->
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+
         </div>
 
 
     </section>
 
-
-
-    <script>
-        // open the menu
-        function toggleMenu() {
-            const menu = document.getElementById('category-menu');
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-            }
-        }
-
-        // to hide the menu when not in use
-        window.onclick = function(event) {
-            if (!event.target.matches('.menu-icon')) {
-                const menu = document.getElementById('category-menu');
-                if (menu.style.display === "block") {
-                    menu.style.display = "none";
-                }
-            }
-        };
-
-    </script>
+    <script src="{% static 'script.js' %}"></script>
 
 </body>
 </html>
