@@ -19,7 +19,13 @@ login/template/home.html
 
 6] changed whole code of Scrapping
 
+7] implemented Ai to Generate summary of a news. used NLP.
 
+8] deployed ai with [sui] last mom
+
+9] introduced cache in home page
+
+10] need to implement async and await.
 }
 
 -----------------------------------------------------------------------------------------

@@ -4,24 +4,28 @@ from urllib.parse import urljoin
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.text_rank import TextRankSummarizer
+from django.views.decorators.cache import cache_page
+# import asyncio
+# import httpx
 # from django.http import HttpResponse,HttpRequest
 # import requests as Req , bs4
 # from .utils import head_function, summarize
 # from .utils import ref_link
 
 
-
+#globals
 ref_link = []
 # Create your views here.
+@cache_page(60 * 30)
 def scrape_function(request):
     context = head_function()
     return render(request
                   ,template_name="home.html"
                   ,context=context)
 
-def summary(request):
-    context = summarize(ref_link)
-    return render(request,template_name='home.html',context=context)
+# def summary(request):
+#     context = summarize(ref_link)
+#     return render(request,template_name='home.html',context=context)
 
 
 def inovation(request):
@@ -55,9 +59,10 @@ def head_function():
                 image.append(r"https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg")
 
     # Concatenating link to open to scrape and summarize
-    for x in range(0, len(ref_link)):
-        if not ref_link[x].startswith("http"):
-            ref_link[x] = urljoin(url, ref_link[x])
+    # for x in range(0, len(ref_link)):
+    #     if not ref_link[x].startswith("http"):
+    #         ref_link[x] = urljoin(url, ref_link[x])
+    ref_link = [urljoin(url, link) if not link.startswith("http") else link for link in ref_link]
 
     x = summarize(ref_link)
 
