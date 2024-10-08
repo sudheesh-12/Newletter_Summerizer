@@ -33,24 +33,22 @@
     <section class="news-container">
 
         <div class="large-news-block">
+            {% for headline, para, web_img,sum in news_items %}
+                <div class="large-news-item" >
 
-            <div class="large-news-item" >
-                {% for headline, para, web_img in news_items %}
-                    <div class="large-news">
-                        <img src="{{ web_img }}" alt="News Image">
-                        <h2>{{ headline }}</h2> <!-- Display each headline -->
-                        <p>{{ para }}</p> <!-- Display corresponding paragraph -->
-                    </div>
-                {% endfor %}
+                        <div class="large-news">
+                            <img src="{{ web_img }}" alt="News Image">
+                            <h2>{{ headline }}</h2> <!-- Display each headline -->
+                            <p>{{ para }}</p> <!-- Display corresponding paragraph -->
+                        </div>
 
-                {% for headline, para, web_img in news_items %}
-                    <div class="large-news-summary" >
-                        <p>Summary of the news </p><!-- Display corresponding summary -->
-                    </div>
-                {% endfor %}
-            </div>
+                        <div class="large-news-summary" >
+                            <p>{{ sum }}</p><!-- Display corresponding summary -->
+                        </div>
 
-        </div>
+                </div>
+            {% endfor %}
+</div>
 
 
     </section>
