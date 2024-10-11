@@ -33,7 +33,7 @@
     <section class="news-container">
 
         <div class="large-news-block">
-            {% for headline, para, web_img,sum in news_items %}
+            {% for headline, para, web_img,summary in news %}
                 <div class="large-news-item" >
 
                         <div class="large-news">
@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="large-news-summary" >
-                            <p>{{ sum }}</p><!-- Display corresponding summary -->
+                            <p>{{ summary }}</p><!-- Display corresponding summary -->
                         </div>
 
                 </div>

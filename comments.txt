@@ -26,6 +26,9 @@ login/template/home.html
 9] introduced cache in home page
 
 10] need to implement async and await.
+
+11] implemented async and await on home page
+12] need to inegrated sports and innovation
 }
 
 -----------------------------------------------------------------------------------------
