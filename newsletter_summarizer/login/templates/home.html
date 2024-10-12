@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-
 </head>
 <body>
 
     <header>
-        <h1>NEWSLETTER <span>APP</span></h1>
+        <h1>BRIEFLY: Your News,Simplified<span>APP</span></h1>  <!-- here the span "APP" is in black color-->
     </header>
 
     <nav>
@@ -30,8 +29,6 @@
 
 <!--    <div class="page_name"><i class="fas fa-home"></i><h2>Home</h2></div>-->
 
-    <section class="news-container">
-
         <div class="large-news-block">
             {% for headline, para, web_img,summary in news %}
                 <div class="large-news-item" >
@@ -42,14 +39,15 @@
                             <p>{{ para }}</p> <!-- Display corresponding paragraph -->
                         </div>
 
-                        <div class="large-news-summary" >
-                            <p>{{ summary }}</p><!-- Display corresponding summary -->
+                        <div class="news-summary" >
+                            <div class="news-text">
+                                <p>{{ summary }}</p>
+                            </div>    <!-- Display corresponding summary -->
+                            <a href="https://bbc.com/" class="read-more-btn">Read More</a>  <!--add the link here-->
                         </div>
-
                 </div>
             {% endfor %}
-</div>
-
+        </div>
 
     </section>
 

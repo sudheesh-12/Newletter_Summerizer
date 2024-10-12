@@ -45,4 +45,16 @@ priti{
 -------------------------------------------------------------------------------------------
 arin{
 
+* Created a seperate file in login folder named static which has CSS and JS file in it.
+
+* All the color combinations and animations are in the CSS file, also added the comments to it
+
+* Improved the UI
+
+* Added the href and read more button on summary also adjusted the summary text
+
+* Will add the changes shown in the group
+
+*
+
 }
