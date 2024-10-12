@@ -29,27 +29,35 @@
 
 <!--    <div class="page_name"><i class="fas fa-home"></i><h2>Home</h2></div>-->
 
-        <div class="large-news-block">
-            {% for headline, para, web_img,summary in news %}
-                <div class="large-news-item" >
+    <div class="large-news-block">
+        {% for headline, para, web_img,summary in news %}
+            <div class="large-news-item" >
 
-                        <div class="large-news">
-                            <img src="{{ web_img }}" alt="News Image">
-                            <h2>{{ headline }}</h2> <!-- Display each headline -->
-                            <p>{{ para }}</p> <!-- Display corresponding paragraph -->
-                        </div>
-
-                        <div class="news-summary" >
-                            <div class="news-text">
-                                <p>{{ summary }}</p>
-                            </div>    <!-- Display corresponding summary -->
-                            <a href="https://bbc.com/" class="read-more-btn">Read More</a>  <!--add the link here-->
-                        </div>
+                <div class="large-news">
+                    <img src="{{ web_img }}" alt="News Image">
+                    <h2>{{ headline }}</h2> <!-- Display each headline -->
+                    <p>{{ para }}</p> <!-- Display corresponding paragraph -->
                 </div>
-            {% endfor %}
-        </div>
 
-    </section>
+                <a href="https://bbc.com/" class="news-summary"><!--Add the link here-->
+                    <div class="news-text">
+                        <p>{{ summary }}</p>
+                    </div>
+                    <div class="journalist-name">
+                        <p>By: Arin Thamke</p> <!-- Display journalist's name -->
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>About Us</h3>
+            <p>WORLD WIDE BULLETIN</p>
+            <p>Created By a Bunch of Universal Rookies</p>
+        </div>
+    </footer>
 
     <script src="{% static 'script.js' %}"></script>
 

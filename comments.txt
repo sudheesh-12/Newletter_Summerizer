@@ -55,6 +55,8 @@ arin{
 
 * Will add the changes shown in the group
 
+* Added Footer on the Home page and made the whole summary box clickable and few changes in UI
+
 *
 
 }
