@@ -8,13 +8,13 @@
 body {
     padding-top:100px;
     font-family: Arial, sans-serif;
-    background-color: #ff5600; /*change color here*/
+    background-color: #FEFAE0; /*change color here*/
 }
 
 /*HEADER color */
 header {
-    background-color: #28a745; /*change color background here*/
-    color: #900000; /*change text color here*/
+    background-color: #525e39; /*change color background here*/
+    color: white; /*change text color here*/
     padding: 1rem;
     text-align: center;
     position:fixed;
@@ -43,10 +43,10 @@ nav {
 
 }
 
-/*menu icon background*/
+/*menu icon background current 729762*/
 #category-menu {
     display: block;
-    background-color: #28a745; /*change color here*/
+    background-color: #626F47; /*change color here*/
     padding: 20px;
     position: fixed;
     top: 0;
@@ -65,12 +65,12 @@ nav {
 #category-menu li a{
     list-style: none;
     margin: 15px 0;
-    border-bottom: 2px solid #900000; /*change color here*/
+    border-bottom: 2px solid white; /*change color here*/
 }
 
 /*menu category default- current color white*/
 #category-menu li a {
-    color: rgb(255, 255, 255); /*change color here*/
+    color: white; /*change color here*/
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -131,22 +131,7 @@ nav {
     z-index:1;
 }
 
-/*color of the whole news block- current color white*/
-.large-news-item {
-    background-color: white; /*change color here*/
-    margin-bottom: 20px;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    position: relative;
-    width: 100%;
-    border: 5px solid black;
-}
+
 
 .large-news, .news-summary {
     width: 50%;
@@ -157,15 +142,15 @@ nav {
     align-items: center;
 }
 
-/*IMG,Headline and insights container- current color is white*/
+/*IMG,Headline and insights container- current color is F2EED7*/
 .large-news {
-    background-color: white; /*change color here*/
+    background-color: #F2EED7; /*change color here*/
     border-radius: 10px;
 }
 
-/*Summary border container- current color blue*/
+/*Summary border container- current color 798645*/
 .news-summary {
-    background-color: #4cc9f0;
+    background-color: #5d7840;
     border-radius: 10px;
     /*display-flex: column;*/
     position: relative;
@@ -180,6 +165,22 @@ nav {
     cursor: alias;
 }
 
+/*color of the whole news block- current color F2EED7*/
+.large-news-item {
+    background-color: #F2EED7; /*change color here*/
+    margin-bottom: 20px;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    width: 100%;
+    border: 5px solid #525e39; /*border*/
+}
 /*Default button color*/
 .journalist-name{
     color: white;
@@ -205,9 +206,9 @@ nav {
     transform: scale(1.02);  /*this is used to largen the text on hover*/
 }
 
-/*Summary container- current color is white*/
+/*Summary container- current color is F2EED7*/
 .news-text{
-    background-color: white; /*change color here*/
+    background-color: #F2EED7; /*change color here*/
     border-radius: 10px;
     display-flex: column;
     position: relative;
@@ -233,14 +234,14 @@ nav {
     top: 0;
     bottom: 0;
     left: 50%;
-    width: 2px; /* Thickness of the line */
-    background-color: black;
+    width: 4px; /* Thickness of the line */
+    background-color: #525e39;
     transform: translateX(-50%);
 }
 
 /*Footer- current blackish blue*/
 footer {
-    background-color: #25262e; /*Change color here*/
+    background-color: #658147; /*Change color here*/
     color: white; /
     text-align: center;
     padding: 20px 0;
