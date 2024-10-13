@@ -114,7 +114,7 @@ platformdirs==4.1.0
 prompt-toolkit==3.0.43
 proto-plus==1.24.0
 protobuf==4.25.3
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
 pure-eval==0.2.2
 pyarmor==8.5.11
 pyarmor.cli.core==6.5.3
