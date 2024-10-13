@@ -28,12 +28,3 @@ def inovation(request):
 def sports(request):
     return render(request,template_name="sports.html")
 
-
-
-
-
-
-
-
-
-
