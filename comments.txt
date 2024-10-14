@@ -53,10 +53,16 @@ arin{
 
 * Added the href and read more button on summary also adjusted the summary text
 
-* Will add the changes shown in the group
+* /// Half changes have been Implemented
 
 * Added Footer on the Home page and made the whole summary box clickable and few changes in UI
 
-*
+* Changed the CSS and HTML classes making it more readable and easy to understand
+
+* Added the Overlay, which blurs the background when user open the menu
+
+* Fixed the Summary container issue(Tatti) and updated the Inovation and Sports Page Upto date
+
+* 
 
 }

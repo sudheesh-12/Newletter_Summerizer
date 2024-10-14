@@ -1,47 +1,51 @@
-// open the menu
+// Function to toggle the menu and blur effect
 function toggleMenu() {
     const menu = document.getElementById('category-menu');
-    if (menu.style.display === "block") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "block";
-    }
-}
+    const overlay = document.getElementById('overlay');
+    const bodyContent = document.querySelectorAll('.news-block, footer'); // Select news-block and footer, exclude header
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
 
-// to hide the menu when not in use
-window.onclick = function(event) {
-    if (!event.target.matches('.menu-icon')) {
-        const menu = document.getElementById('category-menu');
-        if (menu.style.display === "block") {
-            menu.style.display = "none";
-        }
-    }
-};
-
-
-function toggleMenu() {
-    const menu = document.getElementById('category-menu');
-    menu.classList.toggle('show'); // Toggle the 'show' class to slide in/out
-}
-
-// Close the menu when clicking outside of it
-window.onclick = function(event) {
-    const menu = document.getElementById('category-menu');
-    if (!event.target.matches('.menu-icon') && menu.classList.contains('show')) {
+    if (menu.classList.contains('show')) {
+        // Close the menu
         menu.classList.remove('show');
+        overlay.style.display = "none";
+        bodyContent.forEach((element) => {
+            element.classList.remove('blur'); // Remove blur effect
+        });
+        menuIcon.style.display = "block"; // Show menu icon
+        closeIcon.style.display = "none"; // Hide close icon
+    } else {
+        // Open the menu
+        menu.classList.add('show');
+        overlay.style.display = "block";
+        bodyContent.forEach((element) => {
+            element.classList.add('blur'); // Apply blur effect to news-block and footer
+        });
+        menuIcon.style.display = "none"; // Hide menu icon
+        closeIcon.style.display = "block"; // Show close icon
     }
+}
+
+// Close the menu when clicking outside (on the overlay)
+document.getElementById('overlay').onclick = function() {
+    toggleMenu();
 };
 
+// Highlight the active menu item based on the current URL
+const currentPage = window.location.pathname.split("/").pop();
+const menuLinks = document.querySelectorAll("#category-menu li a");
 
-// Get the current URL path (e.g., '/sports.html')
-    const currentPage = window.location.pathname.split("/").pop();
+menuLinks.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
 
-    // Get all menu links
-    const menuLinks = document.querySelectorAll("#category-menu li a");
+document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.getElementById("menuIcon");
+    const closeIcon = document.getElementById("closeIcon");
 
-    // Loop through each link and compare its href attribute with the current page
-    menuLinks.forEach(link => {
-        if (link.getAttribute("href") === currentPage) {
-            link.classList.add("active"); // Add the "active" class to the matching link
-        }
-    });
+    menuIcon.addEventListener("click", toggleMenu);
+    closeIcon.addEventListener("click", toggleMenu);
+});

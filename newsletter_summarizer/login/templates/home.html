@@ -10,43 +10,47 @@
 </head>
 <body>
 
+    <div class="overlay" id="overlay"></div> <!-- Overlay element -->
+
     <header>
-        <h1>WorldWide Bulletin</h1>  <!-- here the span "APP" is in black color-->
+        <h1>WorldWide <span>Bulletin</span></h1>  <!-- here the span "APP" is in black color-->
     </header>
 
     <nav>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <ul id="category-menu">
-            <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="Travel.html">News</a></li>
-            <li><a href="{% url 'inovation' %}">Inovation</a></li>
-            <li><a href="{% url 'sports' %}">Sports</a></li>
-            <li><a href="#business">Business</a></li>
-            <li><a href="#politics">Arts</a></li>
-            <li><a href="#crime">Culture</a></li>
-        </ul>
+        <div class="close-icon" id="closeIcon" style="display:none;" onclick="toggleMenu()">✖</div>
     </nav>
+
+    <ul id="category-menu">
+        <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#News">News</a></li>
+        <li><a href="{% url 'inovation' %}">Inovation</a></li>
+        <li><a href="{% url 'sports' %}">Sports</a></li>
+        <li><a href="#business">Business</a></li>
+        <li><a href="#Arts">Arts</a></li>
+        <li><a href="#Culture">Culture</a></li>
+    </ul>
 
 <!--    <div class="page_name"><i class="fas fa-home"></i><h2>Home</h2></div>-->
 
-    <div class="large-news-block">
+    <div class="news-block">
         {% for headline, para, web_img,summary in news %}
-            <div class="large-news-item" >
+            <div class="news-container" >
 
-                <div class="large-news">
+                <div class="news-container-left">
                     <img src="{{ web_img }}" alt="News Image">
                     <h2>{{ headline }}</h2> <!-- Display each headline -->
                     <p>{{ para }}</p> <!-- Display corresponding paragraph -->
                 </div>
 
-                <a href="https://bbc.com/" class="news-summary"><!--Add the link here-->
-                    <div class="news-text">
+                <div class="news-container-right">
+                    <div class="news-summary">
                         <p>{{ summary }}</p>
                     </div>
                     <div class="journalist-name">
-                        <p>Read More at :- 'add link'</p> <!-- Display journalist's name -->
+                        <a href="https://bbc.com/">Read More at :- 'add link'</a> <!-- Only journalist's name is clickable -->
                     </div>
-                </a>
+                </div>
             </div>
         {% endfor %}
     </div>

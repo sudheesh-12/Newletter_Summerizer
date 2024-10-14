@@ -3,51 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports News</title>
+    <title>AI News Scrapper</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Link to your main CSS -->
-
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
 
+    <div class="overlay" id="overlay"></div> <!-- Overlay element -->
+
     <header>
-        <h1>NEWSLETTER <span>APP</span></h1>
+        <h1>WorldWide <span>Bulletin</span></h1>  <!-- here the span "APP" is in black color-->
     </header>
 
     <nav>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <ul id="category-menu">
-            <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="Travel.html">Travel</a></li>
-            <li><a href="{% url 'inovation' %}">Inovation</a></li>
-            <li><a href="{% url 'sports' %}">Sports</a></li>
-            <li><a href="#business">Business</a></li>
-            <li><a href="#politics">Politics</a></li>
-            <li><a href="#crime">Crime</a></li>
-        </ul>
+        <div class="close-icon" id="closeIcon" style="display:none;" onclick="toggleMenu()">✖</div>
     </nav>
 
-    <section class="news-container">
+    <ul id="category-menu">
+        <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#News">News</a></li>
+        <li><a href="{% url 'inovation' %}">Inovation</a></li>
+        <li><a href="{% url 'sports' %}">Sports</a></li>
+        <li><a href="#business">Business</a></li>
+        <li><a href="#Arts">Arts</a></li>
+        <li><a href="#Culture">Culture</a></li>
+    </ul>
 
+<!--    <div class="page_name"><i class="fas fa-home"></i><h2>Home</h2></div>-->
 
-         <div class="large-news-block">
-            {% for headline, para, web_img in news_items %}
-                <div class="large-news-item" >
-                    <div class="large-news">
-                        <img src="{{ web_img }}" alt="News Image 2">
-                        <h2>{{ headline }}</h2> <!-- Display each headline -->
-                        <p>{{ para }}</p> <!-- Display corresponding paragraph -->
+    <div class="news-block">
+        {% for headline, para, web_img,summary in news %}
+            <div class="news-container" >
+
+                <div class="news-container-left">
+                    <img src="{{ web_img }}" alt="News Image">
+                    <h2>{{ headline }}</h2> <!-- Display each headline -->
+                    <p>{{ para }}</p> <!-- Display corresponding paragraph -->
+                </div>
+
+                <div class="news-container-right">
+                    <div class="news-summary">
+                        <p>{{ summary }}</p>
                     </div>
-                    <div class="large-news-summary" >
-                        <p>Summary of the news </p><!-- Display corresponding summary -->
+                    <div class="journalist-name">
+                        <a href="https://bbc.com/">Read More at :- 'add link'</a> <!-- Only journalist's name is clickable -->
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
+    </div>
 
-    </section>
+    <footer>
+        <div class="footer-content">
+            <h3>About Us</h3>
+            <p>WorldWide Bulletin</p>
+            <p>Created By a Bunch of Universal Rookies</p>
+        </div>
+    </footer>
 
     <script src="{% static 'script.js' %}"></script>
 
