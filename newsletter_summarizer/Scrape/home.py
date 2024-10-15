@@ -46,54 +46,55 @@ async def scrape_element(session, url, tag):
 
     sum_news =  await summarize(ref_link)
 
-    return zip(head, para, image, sum_news)
+    return zip(head, para, image, sum_news,ref_link)
 
 def foo():
     pass
 
-async def summarize(link_list): #used in scrape_element function
+
+async def summarize(link_list):
     summaries = []
     async with aiohttp.ClientSession() as session:
         try:
-            for x in link_list:
-                response = await fetch_page(session, x) #throws error code 200 why?
+            # Fetch all pages concurrently
+            tasks = [fetch_page(session, x) for x in link_list]
+            pages = await asyncio.gather(*tasks)
 
-                if not response:
-                    summaries.append(f"No content returned from {x}.")
+            parser = PlaintextParser  # Moved outside to avoid recreation in each iteration
+            summarizer = TextRankSummarizer()
+
+            for idx, page_content in enumerate(pages):
+                if not page_content:
+                    summaries.append(f"No content returned from {link_list[idx]}.")
                     continue
 
-                nest_soup = bs4.BeautifulSoup(response, "html.parser")
-                nest_para = nest_soup.select('article')  # 'article' tag should be in lowercase
+                # Parse the HTML content
+                soup = bs4.BeautifulSoup(page_content, "html.parser")
+                article_tag = soup.find('article')
 
-                if nest_para:  # Ensure there is an article tag
-                    full_news = nest_para[0].findAll('p')
+                if article_tag:
+                    paragraphs = article_tag.find_all('p')
+                    text = " ".join([p.get_text() for p in paragraphs])
 
-                    # Extract the text from all paragraphs
-                    news = [x.getText() for x in full_news]
+                    if text.strip():  # Ensure the text is not empty
+                        # Parse and summarize the text
+                        parsed_text = parser.from_string(text, Tokenizer("english"))
+                        summary = summarizer(parsed_text.document, 5)
 
-                    # Merge all paragraphs into a single string
-                    text = " ".join(news)
-
-                    # Summarize the merged text
-                    parser = PlaintextParser.from_string(text, Tokenizer("english"))
-                    summarizer = TextRankSummarizer()
-                    summary = summarizer(parser.document, 5)  # Summarize into 5 sentences
-
-                    # Convert the summarized sentences into a single string
-                    summary_sentences = [str(sentence) for sentence in summary]
-                    summary_sentences = " ".join(summary_sentences)
-                    # Store the summary in a dictionary
-
-                    summaries.append(summary_sentences)
+                        # Join summarized sentences
+                        summary_sentences = " ".join(str(sentence) for sentence in summary)
+                        summaries.append(summary_sentences)
+                    else:
+                        summaries.append("Article content is empty.")
                 else:
-                    summaries.append("Summary not available.")  # If no article found
+                    summaries.append("Article tag not found.")
         except Exception as e:
-            summaries.append(f"Some Error Occured at url = {x} error ---> {e}")
+            summaries.append(f"An error occurred: {e}")
 
-        return summaries
+    return summaries
 
 
-async def main():
+async def home_function():
     url = 'https://bbc.com'
     async with aiohttp.ClientSession() as session:
         news = await scrape_element(session=session,url=url,tag="a")

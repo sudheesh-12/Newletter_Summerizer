@@ -29,6 +29,10 @@ login/template/home.html
 
 11] implemented async and await on home page
 12] need to inegrated sports and innovation
+
+13] integrated innovation, culture, business
+14] also made new html for the same
+15] renamed utils to home
 }
 
 -----------------------------------------------------------------------------------------

@@ -34,7 +34,7 @@
 <!--    <div class="page_name"><i class="fas fa-home"></i><h2>Home</h2></div>-->
 
     <div class="news-block">
-        {% for headline, para, web_img,summary, links in news %}
+        {% for headline, para, web_img,summary, links in business_news %}
             <div class="news-container" >
 
                 <div class="news-container-left">
@@ -48,7 +48,7 @@
                         <p>{{ summary }}</p>
                     </div>
                     <div class="journalist-name">
-                        <a href="{{ links }}">Read More at :- {{links}}</a> <!-- Only journalist's name is clickable -->
+                        <a href="{{ links }}">Read More at :- {{links}}"</a> <!-- Only journalist's name is clickable -->
                     </div>
                 </div>
             </div>
