@@ -43,3 +43,7 @@ def culture(request):
     return render(request
            ,template_name='culture.html'
            ,context = context)
+
+
+def aboutus(request):
+    return render(request,template_name="aboutus.html")

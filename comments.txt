@@ -67,6 +67,11 @@ arin{
 
 * Fixed the Summary container issue(Tatti) and updated the Inovation and Sports Page Upto date
 
+* Created About us page with its corresponding css file in static folder and also finalized
+  the footer
+
+* Will fix the about us page issue and make it responsive according to different screens
+
 * 
 
 }

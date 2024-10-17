@@ -2,7 +2,7 @@
 function toggleMenu() {
     const menu = document.getElementById('category-menu');
     const overlay = document.getElementById('overlay');
-    const bodyContent = document.querySelectorAll('.news-block, footer'); // Select news-block and footer, exclude header
+    const bodyContent = document.querySelectorAll('.news-block'); // Select news-block and footer, exclude header
     const menuIcon = document.getElementById('menuIcon');
     const closeIcon = document.getElementById('closeIcon');
 
