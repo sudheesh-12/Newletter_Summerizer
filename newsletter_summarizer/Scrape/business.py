@@ -9,14 +9,11 @@ import nltk
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
-
-
-
-
 #Global variable
 business_link=[]
-def url_join(url):
+def url_join():
     global business_link
+    url = "https://bbc.com"
     business_link = [urljoin(url, link) if not link.startswith("http") else link for link in business_link]
 
 async def fetch_page(session,url:str): #used in #used in scrape_element function and summarize_as
@@ -46,14 +43,10 @@ async def scrape_element(session, url, tag):
             else:
                 image.append("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg")
 
-    url_join(url=url)
-
+    url_join()
     sum_news =  await summarize(business_link)
 
     return zip(head, para, image, sum_news,business_link)
-
-def foo():
-    pass
 
 
 async def summarize(link_list):

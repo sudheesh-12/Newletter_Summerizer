@@ -15,7 +15,8 @@ nltk.download('punkt_tab')
 
 #Global variable
 culture_link=[]
-def url_join(url):
+def url_join():
+    url = "https://bbc.com"
     global culture_link
     culture_link = [urljoin(url, link) if not link.startswith("http") else link for link in culture_link]
 
@@ -46,7 +47,7 @@ async def scrape_element(session, url, tag):
             else:
                 image.append("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg")
 
-    url_join(url=url)
+    url_join()
 
     sum_news =  await summarize(culture_link)
 

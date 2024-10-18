@@ -14,18 +14,18 @@ nltk.download('punkt_tab')
 
 
 #Global variable
-innovation_link=[]
+news_link=[]
 def url_join():
     url = "https://bbc.com"
-    global innovation_link
-    innovation_link = [urljoin(url, link) if not link.startswith("http") else link for link in innovation_link]
+    global news_link
+    news_link = [urljoin(url, link) if not link.startswith("http") else link for link in news_link]
 
 async def fetch_page(session,url:str): #used in #used in scrape_element function and summarize_as
     async with session.get(fr"{url}") as response:
         return await response.text()
 
 async def scrape_element(session, url, tag):
-    global innovation_link
+    global news_link
     head = []
     para = []
     image = []
@@ -41,7 +41,7 @@ async def scrape_element(session, url, tag):
         if h2 and p:
             head.append(h2[0].getText())
             para.append(p[0].getText())
-            innovation_link.append(elements.get('href'))
+            news_link.append(elements.get('href'))
             if img:
                 image.append(img[1]['src'])
             else:
@@ -49,9 +49,9 @@ async def scrape_element(session, url, tag):
 
     url_join()
 
-    sum_news =  await summarize(innovation_link)
+    sum_news =  await summarize(news_link)
 
-    return zip(head, para, image, sum_news,innovation_link)
+    return zip(head, para, image, sum_news,news_link)
 
 def foo():
     pass
@@ -99,12 +99,11 @@ async def summarize(link_list):
     return summaries
 
 
-async def innovation_function():
-    url = 'https://bbc.com/innovation'
+async def news_function():
+    url = 'https://bbc.com/news'
     async with aiohttp.ClientSession() as session:
         news = await scrape_element(session=session,url=url,tag="a")
         context = {
-            "innovation_news" : news
+            "news_news" : news
         }
         return context
-

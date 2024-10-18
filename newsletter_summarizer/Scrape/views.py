@@ -5,6 +5,8 @@ from .home import home_function
 from .business import business_function
 from .innovation import innovation_function
 from .culture import culture_function
+from .news import news_function
+from .arts import arts_function
 
 
 # Create your views here.
@@ -24,10 +26,6 @@ def inovation(request):
                   ,context=context)
 
 
-@cache_page(60 * 10)
-def sports(request):
-    return render(request,template_name="sports.html")
-
 
 @cache_page(60 * 10)
 def business(request):
@@ -44,6 +42,21 @@ def culture(request):
            ,template_name='culture.html'
            ,context = context)
 
+
+@cache_page(60 * 10)
+def news(request):
+    context = asyncio.run(news_function())
+    return render(request
+                  , template_name='news.html'
+                  , context=context)
+
+
+@cache_page(60 * 10)
+def arts(request):
+    context = asyncio.run(arts_function())
+    return render(request
+                  , template_name='arts.html'
+                  , context=context)
 
 def aboutus(request):
     return render(request,template_name="aboutus.html")

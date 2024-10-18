@@ -5,8 +5,9 @@ urlpatterns = [
 
     path('',views.scrape_function,name="head_function"),
     path('inovation/',views.inovation,name="inovation"),
-    path('sports',views.sports,name="sports"),
     path('business/',views.business,name="business"),
     path('culture/',views.culture,name="culture"),
-    path('aboutus/',views.aboutus,name="aboutus")
+    path('aboutus/',views.aboutus,name="aboutus"),
+    path('news/',views.news,name="News"),
+    path('arts/', views.arts, name="arts"),
 ]

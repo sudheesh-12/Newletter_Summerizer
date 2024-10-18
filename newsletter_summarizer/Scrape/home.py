@@ -13,7 +13,8 @@ nltk.download('punkt_tab')
 
 #Global variable
 ref_link=[]
-def url_join(url):
+def url_join():
+    url = "https://bbc.com"
     global ref_link
     ref_link = [urljoin(url, link) if not link.startswith("http") else link for link in ref_link]
 
@@ -44,7 +45,7 @@ async def scrape_element(session, url, tag):
             else:
                 image.append("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg")
 
-    url_join(url=url)
+    url_join()
 
     sum_news =  await summarize(ref_link)
 
@@ -80,7 +81,7 @@ async def summarize(link_list):
 
                     if text.strip():  # Ensure the text is not empty
                         # Parse and summarize the text
-                        parsed_text = parser.from_string(text, Tokenizer("english"))
+                        parsed_text = parser.from_string(text, Tokenizer("german"))
                         summary = summarizer(parsed_text.document, 5)
 
                         # Join summarized sentences
@@ -97,7 +98,7 @@ async def summarize(link_list):
 
 
 async def home_function():
-    url = 'https://bbc.com'
+    url = 'https://www.bbc.com/news'
     async with aiohttp.ClientSession() as session:
         news = await scrape_element(session=session,url=url,tag="a")
         context = {
