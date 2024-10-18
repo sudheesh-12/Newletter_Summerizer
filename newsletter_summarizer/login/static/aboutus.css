@@ -8,11 +8,10 @@
 body {
     padding-top: 90px;
     font-family: 'Times New Roman', Times, serif;
-    background-color: #FEFAE0; /* Light background color */
+    background-color: #63737a; /* Updated to #07b092 */
     color: #D3D3D3;
     transition: filter 0.4s ease;
 }
-
 
 /* Overlay styling */
 .overlay {
@@ -29,8 +28,8 @@ body {
 
 /* Header styling */
 header {
-    background-color: #525e39; /* Header Background Color */
-    color: white; /* Light Grey */
+    background-color: #0e3149; /* Header Background Color */
+    color: white;
     padding: 10px;
     text-align: center;
     position: fixed;
@@ -42,7 +41,7 @@ header {
 
 /* Span within header */
 header span {
-    color: black; /* Accent color for header */
+    color: white; /* Accent color for header */
 }
 
 header span1 {
@@ -61,7 +60,7 @@ nav {
 .menu-icon, .close-icon {
     font-size: 30px;
     cursor: pointer;
-    color: black; /* Color of menu icons */
+    color: black;
     margin: 0 5px;
 }
 
@@ -80,10 +79,10 @@ nav {
 #category-menu {
     list-style-type: none;
     display: block;
-    background-color: #626F47; /* Menu Background Color */
+    background-color: #0e3149; /* Updated to #FFD700 */
     padding: 15px;
     position: fixed;
-    top: 71px; /* Positioned below the header */
+    top: 71px;
     left: -250px;
     height: calc(100% - 70px);
     width: 250px;
@@ -93,31 +92,31 @@ nav {
 
 /* Menu in open state */
 #category-menu.show {
-    left: 0; /* Slide in from the left */
+    left: 0;
 }
 
 /* Menu items (links) */
 #category-menu li a {
     list-style: none;
     margin: 15px 0;
-    border-bottom: 2px solid #525e39; /* Dark Red Divider */
-    text-decoration: none; /* Remove underline from links */
+    border-bottom: 2px solid #;
+    text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 /* Link text inside the menu */
 #category-menu li a {
-    color: white; /* Light Grey */
+    color: #63737a;
     display: block;
     padding: 10px;
     text-decoration: none;
 }
 
-/* Active menu item*/
+/* Active menu item */
 #category-menu li a.active {
     color: black;
     font-weight: bold;
-    background-color: #FEFAE0;
+    background-color: #07b092; /* Updated to #07b092 */
     border-radius: 10px;
 }
 
@@ -128,10 +127,9 @@ nav {
 
 /* Hover effect for menu items */
 #category-menu li a:hover {
-    color: black; /* Hover Text Color */
-    background-color: #FEFAE0; /* Dark Red Background on Hover */
+    color: black;
+    background-color: #07b092; /* Updated to #07b092 */
     border-radius: 10px;
-    /*animation: loadingBar 0.5s forwards;*/
 }
 
 /* Hover animation */
@@ -144,17 +142,11 @@ nav {
     }
 }
 
-.footer h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
 /* Team section styling */
 .about-us {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center the team container horizontally */
+    justify-content: center;
     align-items: center;
     margin: 2rem auto;
     padding: 1rem;
@@ -164,10 +156,10 @@ nav {
 
 /* Single team member container centered */
 .team-container {
-    background-color: #d0ec94;
+    background-color: #d9d9d9;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 50%; /* Adjust the width to make it look centered and balanced */
+    width: 65%;
     margin: 1rem;
     padding: 1.5rem;
     text-align: center;
@@ -176,66 +168,102 @@ nav {
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    max-width: 600px; /* Max width for the container */
+    max-width: 600px;
+    border: 5px solid #0e1349;
 }
 
 .team-container:hover {
     transform: scale(1.03);
+    border: 3px solid #0D92F4;
 }
 
-/* Team member image */
+.team-container:nth-child(odd) {
+    flex-direction: row;
+}
+
+.team-container:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.team-left {
+    flex: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .team-img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    border-radius: 10px;
     object-fit: cover;
+    border: 3px solid #0D92F4;; /* Updated to #FFD700 */
     margin-bottom: 1rem;
-    border: 3px solid #626F47;/* change the color*/
 }
 
-/* Name and position */
-.team-container h3 {
-    margin: 0.5rem 0;
+.team-left h3 {
     font-size: 1.5rem;
-    color: #626F47;/* change the color*/
+    color: #0D92F4; /* Updated to #FFD700 */
 }
 
 .designation {
     font-style: italic;
     color: #555;
-    margin-bottom: 1rem;
+    margin-top: 0.5rem;
 }
 
-/* Scrollable info box */
+/* 60% size ratio for the text container */
+.team-right {
+    flex: 60%;
+    padding-left: 20px;
+}
+
+/* Scrollable text */
 .scrollable-text {
     max-height: 150px;
     overflow-y: auto;
     padding: 0.5rem;
-    text-align: left;
     font-size: 0.9rem;
     line-height: 1.6;
-    border-top: 1px solid #ddd;
-    background-color: #FEFAE0;/* change the color*/
+    background-color: #07b092; /* Updated to #07b092 */
     border-radius: 5px;
-    width: 100%;
+    border-top: 1px solid #ddd;
+    text-align: left;
 }
 
-/* Customize scrollbar */
+/* Scrollbar customization */
 .scrollable-text::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
 }
 
 .scrollable-text::-webkit-scrollbar-track {
-    background-color: #626F47;/* change the color*/
+    background-color: #FFD700; /* Updated to #FFD700 */
 }
 
 .scrollable-text::-webkit-scrollbar-thumb {
-    background-color: #626F47;
+    background-color: #FFD700; /* Updated to #FFD700 */
     border-radius: 3px;
+}
+
+.team-container:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.team-container:nth-child(even) .team-right {
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+.team-container:nth-child(even) .scrollable-text {
+    text-align: right;
 }
 
 /* Footer styling */
 footer {
-    background-color: #506b33;
+    background-color: #0e3149;
     color: #D3D3D3;
     padding: 40px 0;
     position: relative;
@@ -245,12 +273,18 @@ footer {
     text-align: center;
 }
 
-.head h1{
-  color: white;
+.head h1 {
+    color: white;
 }
 
-.head span{
+.head span {
     color: black;
+}
+
+.footer h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .footer-container {
@@ -275,11 +309,10 @@ footer {
 
 .footer-content p,
 .footer-content a {
-    color: #FEFAE0;
+    color: #07b092; /* Updated to #07b092 */
     line-height: 1.6;
     text-decoration: none;
     font-size: 0.9rem;
-    font: bold;
 }
 
 .footer-content a:hover {
@@ -296,7 +329,7 @@ footer {
 }
 
 .quick-links a {
-    color: #FEFAE0;
+    color: #07b092; /* Updated to #07b092 */
     font-size: 0.9rem;
     transition: color 0.3s;
 }
@@ -315,7 +348,7 @@ footer {
 }
 
 .social-media a {
-    color: #FEFAE0;
+    color: #07b092; /* Updated to #07b092 */
     font-size: 0.9rem;
     transition: color 0.3s;
 }
@@ -329,7 +362,7 @@ footer {
 }
 
 .footer-bottom {
-    background-color: #5d7840;
+    background-color: #0e3149;
     padding: 15px 0;
 }
 
@@ -338,4 +371,3 @@ footer {
     font-size: 0.85rem;
     color: #D3D3D3;
 }
-

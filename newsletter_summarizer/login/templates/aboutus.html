@@ -23,7 +23,7 @@
 
     <ul id="category-menu">
         <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="{% url 'News' %}">News</a></li>
+        <li><a href="{% url 'news' %}">News</a></li>
         <li><a href="{% url 'inovation' %}">Inovation</a></li>
         <li><a href="{% url 'business' %}">Business</a></li>
         <li><a href="{% url 'arts' %}">Arts</a></li>
@@ -34,38 +34,54 @@
     <section class="about-us">
 
         <div class="team-container">
-            <img src="member1.jpg" alt="Member 1" class="team-img">
-            <h3>Arin Thamke</h3>
-            <p class="designation">Your Post in Group</p>
-            <div class="scrollable-text">
-                <p>Add your summary here !!!</p>
+            <div class="team-left">
+                <img src="member1.jpg" alt="Member 1" class="team-img">
+                <h3>Arin Thamke</h3>
+                <p class="designation">Your Post in Group</p>
+            </div>
+            <div class="team-right">
+                <div class="scrollable-text">
+                    <p>Add your summary here !!!</p>
+                </div>
             </div>
         </div>
 
         <div class="team-container">
-            <img src="member1.jpg" alt="Member 1" class="team-img">
-            <h3>Harish Nadar</h3>
-            <p class="designation">Your Post in Group</p>
-            <div class="scrollable-text">
-                <p>Add your summary here !!!</p>
+            <div class="team-left">
+                <img src="member2.jpg" alt="Member 2" class="team-img">
+                <h3>Harish Nadar</h3>
+                <p class="designation">Your Post in Group</p>
+            </div>
+            <div class="team-right">
+                <div class="scrollable-text">
+                    <p>Add your summary here !!!</p>
+                </div>
             </div>
         </div>
 
         <div class="team-container">
-            <img src="member1.jpg" alt="Member 1" class="team-img">
-            <h3>Priti Singh</h3>
-            <p class="designation">Your Post in Group</p>
-            <div class="scrollable-text">
-                <p>Add your summary here !!!</p>
+            <div class="team-left">
+                <img src="member3.jpg" alt="Member 3" class="team-img">
+                <h3>Priti Singh</h3>
+                <p class="designation">Your Post in Group</p>
+            </div>
+            <div class="team-right">
+                <div class="scrollable-text">
+                    <p>Add your summary here !!!</p>
+                </div>
             </div>
         </div>
 
         <div class="team-container">
-            <img src="member1.jpg" alt="Member 1" class="team-img">
-            <h3>Sudheesh Shetty</h3>
-            <p class="designation">Your Post in Group</p>
-            <div class="scrollable-text">
-                <p>Add your summary here !!!</p>
+            <div class="team-left">
+                <img src="member4.jpg" alt="Member 4" class="team-img">
+                <h3>Sudheesh Shetty</h3>
+                <p class="designation">Your Post in Group</p>
+            </div>
+            <div class="team-right">
+                <div class="scrollable-text">
+                    <p>Add your summary here !!!</p>
+                </div>
             </div>
         </div>
 
@@ -85,17 +101,15 @@
                     Know More About Us</a>
             </div>
 
-            <!-- Quick Links Section -->
             <div class="footer-content quick-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="{% url 'head_function' %}"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="{% url 'News' %}">News</a></li>
+                    <li><a href="{% url 'news' %}">News</a></li>
                     <li><a href="{% url 'inovation' %}">Inovation</a></li>
                     <li><a href="{% url 'business' %}">Business</a></li>
                     <li><a href="{% url 'arts' %}">Arts</a></li>
                     <li><a href="{% url 'culture' %}">Culture</a></li>
-                    <li><a href="{% url 'aboutus' %}">About Us</a></li>
                 </ul>
             </div>
 

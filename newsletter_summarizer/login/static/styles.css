@@ -8,7 +8,7 @@
 body {
     padding-top: 90px;
     font-family: 'Times New Roman', Times, serif;
-    background-color: #FEFAE0; /* Light background color */
+    background-color: #63737a; /* Light background color */
     color: #D3D3D3;
     transition: filter 0.4s ease;
 }
@@ -29,7 +29,7 @@ body {
 
 /* Header styling */
 header {
-    background-color: #525e39; /* Header Background Color */
+    background-color: #0e3149; /* Header Background Color */
     color: white; /* Light Grey */
     padding: 10px;
     text-align: center;
@@ -42,7 +42,7 @@ header {
 
 /* Span within header */
 header span {
-    color: black; /* Accent color for header */
+    color: white; /* Accent color for header */
 }
 
 header span1 {
@@ -80,7 +80,7 @@ nav {
 #category-menu {
     list-style-type: none;
     display: block;
-    background-color: #626F47; /* Menu Background Color */
+    background-color: #131852; /* Menu Background Color */
     padding: 15px;
     position: fixed;
     top: 71px; /* Positioned below the header */
@@ -100,7 +100,7 @@ nav {
 #category-menu li a {
     list-style: none;
     margin: 15px 0;
-    border-bottom: 2px solid #525e39; /* Dark Red Divider */
+    border-bottom: 2px solid white; /* Dark Red Divider */
     text-decoration: none; /* Remove underline from links */
     transition: background-color 0.3s, transform 0.2s;
 }
@@ -128,8 +128,8 @@ nav {
 
 /* Hover effect for menu items */
 #category-menu li a:hover {
-    color: black; /* Hover Text Color */
-    background-color: #FEFAE0; /* Dark Red Background on Hover */
+    color: black; /* Text Color */
+    background-color: #0D92F4; /* Dark Red Background on Hover */
     border-radius: 10px;
     /*animation: loadingBar 0.5s forwards;*/
 }
@@ -156,7 +156,7 @@ nav {
 
 /* News container for each block */
 .news-container {
-    background-color: #F2EED7; /* Very Dark Grey */
+    background-color: #d9d9d9; /* Very Dark Grey */
     margin-bottom: 20px;
     padding: 1rem;
     border-radius: 10px;
@@ -168,7 +168,7 @@ nav {
     transition: transform 0.3s ease;
     position: relative;
     width: 100%;
-    border: 5px solid #525e39; /* Dark Red Border */
+    border: 5px solid #0e1349; /* Dark Red Border */
 }
 
 /* Images inside the news container */
@@ -190,15 +190,42 @@ nav {
 }
 
 /* Divider line between left and right container */
-.news-container::before {
+/*.line {
+  width: 200px;
+  height: 2px;
+  background-color: black;
+}
+
+.line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 2px;
+  background: radial-gradient(circle at 50% 50%, #fff, #000);
+  clip-path: polygon(0 1px, 200px 1px, 200px 0,0 0);
+}*/
+
+.line {
+    width: 2px; /* Line thickness */
+    height: 80%; /* Line height (adjustable) */
+    background-color: black; /* Solid middle color */
+    position: relative;
+}
+
+.line::before, .line::after {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    background-color:  #525e39; /* Dark Red Divider */
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.line::after {
+    top: 50%;
+    transform: rotate(180deg);
 }
 
 /* Alternating news containers */
@@ -209,6 +236,7 @@ nav {
 /* Hover effect for news blocks */
 .news-container:hover {
     transform: scale(1.03);  /* Scale the block slightly on hover */
+    border: 3px solid #0D92F4;
 }
 
 
@@ -217,17 +245,22 @@ nav {
     color: #333; /* Medium Dark Red */
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 /* Left container of news (headline and insights) */
 .news-container-left {
-    background-color: #F2EED7; /* Medium Dark Grey */
+    background-color: #d9d9d9; /* Medium Dark Grey */
     border-radius: 10px;
+}
+
+.news-container-left h2{
+    text-align: center;
 }
 
 /* Right container (summary and link) */
 .news-container-right {
-    background-color: #5d7840; /* Dark Grey */
+    background-color: #0e1349; /* Dark Grey */
     border-radius: 10px;
     display: flex; /* Corrected from display-flex to display: flex */
     position: relative;
@@ -252,7 +285,7 @@ nav {
 
 /* Summary section styling */
 .news-summary {
-    background-color:  #F2EED7; /* Dark Grey */
+    background-color:  #d9d9d9; /* Dark Grey */
     border-radius: 10px;
     height: 100%;
     width: 100%;
@@ -286,7 +319,7 @@ nav {
 
 /* Footer styling */
 footer {
-    background-color: #506b33;
+    background-color: #0e3149;
     color: #D3D3D3;
     padding: 40px 0;
     position: relative;

@@ -72,6 +72,8 @@ arin{
 
 * Will fix the about us page issue and make it responsive according to different screens
 
-* 
+* Partially Implemented the Takeaways kal puira karunga
+
+*
 
 }
